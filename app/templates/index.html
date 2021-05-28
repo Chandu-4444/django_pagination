@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Pagination</title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        {% for page in page_objects %}
+        <div style="border: 1px solid black">
+            {{page.title}}
+            <br>
+            {{page.description}}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center container mt-5">
+        {% if page_objects.has_previous %}
+        <a class="poppins-font p-2" href="?page={{page_objects.previous_page_number}}">
+            Previous
+        </a>
+        {% endif %}
+
+        <a href="" class="poppins-font p-2 active-btn text-dark" style="background-color: #00e1ff;">
+            {{page_objects.number}}
+        </a>
+
+        {% if page_objects.has_next %}
+        <a class="poppins-font p-2" href="?page={{page_objects.next_page_number}}">
+            Next
+        </a>
+        {% endif %}
+
+    </div>
+
+
+</body>
+
+</html>
